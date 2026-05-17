@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#007AFF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Estudos Concurso</title>
+</head>
+<body>
+  <!-- ╔══════════════════ HOME TAB ══════════════════╗ -->
+  <section id="tab-home" class="tab active">
+    <header class="topbar">
+      <h1>Estudos Concurso</h1>
+      <span id="topbar-date" class="date"></span>
+    </header>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">🔥 Streak</div>
+        <div id="kpi-streak" class="kpi-value blue">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">✅ Hoje (h)</div>
+        <div id="kpi-hoje" class="kpi-value">0.0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">⏳ Meta hoje</div>
+        <div id="kpi-meta" class="kpi-value orange">0.0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">📊 % hoje</div>
+        <div id="kpi-pct" class="kpi-value green">0%</div>
+      </div>
+    </div>
+
+    <div class="info-row" id="meta-semanal-card">
+      <div class="info-label">📅 Meta semanal</div>
+      <div id="meta-semanal-val" class="info-value">0.0h / 0.0h (0%)</div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-label">Adesão geral</div>
+      <div id="adesao-val" class="info-value">0%</div>
+    </div>
+
+    <h2 class="section-header">Fazer Hoje</h2>
+    <div id="fazer-hoje-list" class="list">
+      <div class="empty">— sem revisões hoje —</div>
+    </div>
+
+    <h2 class="section-header">Revisões Atrasadas</h2>
+    <div class="info-row" id="atrasadas-total-row">
+      <div class="info-label">Total atrasadas</div>
+      <div id="atrasadas-total" class="info-value red">0</div>
+    </div>
+    <div id="atrasadas-list" class="list"></div>
+
+    <h2 class="section-header">Histórico — últimos 30 dias</h2>
+    <div id="historico-list" class="historico"></div>
+
+    <h2 class="section-header">Progresso por Matéria</h2>
+    <div id="progresso-list" class="list"></div>
+
+    <h2 class="section-header">Calendário</h2>
+    <div class="info-row">
+      <div class="info-label">Dias úteis este mês</div>
+      <div id="dias-mes" class="info-value">0</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Dias úteis desde início</div>
+      <div id="dias-total" class="info-value">0</div>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════ LOG TAB ══════════════════╗ -->
+  <section id="tab-log" class="tab">
+    <header class="topbar">
+      <h1>Log de Estudos</h1>
+    </header>
+
+    <div class="filter-bar">
+      <select id="log-filter-matter" class="filter-select">
+        <option value="">Todas as matérias</option>
+      </select>
+      <select id="log-filter-fase" class="filter-select">
+        <option value="">Todas as fases</option>
+      </select>
+    </div>
+
+    <div id="log-list" class="list log-list"></div>
+
+    <button id="fab-add" class="fab" aria-label="Adicionar registro">+</button>
+  </section>
+
+  <!-- ╔══════════════════ REVISÕES TAB ══════════════════╗ -->
+  <section id="tab-revisoes" class="tab">
+    <header class="topbar">
+      <h1>Revisões</h1>
+      <span class="subtitle">consulta apenas — registre na aba Log</span>
+    </header>
+
+    <div id="revisoes-list" class="list rev-list"></div>
+  </section>
+
+  <!-- ╔══════════════════ CONFIG TAB ══════════════════╗ -->
+  <section id="tab-config" class="tab">
+    <header class="topbar">
+      <h1>Configurações</h1>
+    </header>
+
+    <h2 class="section-header">Geral</h2>
+    <div class="form-row">
+      <label for="cfg-inicio">Data de início</label>
+      <input type="date" id="cfg-inicio" />
+    </div>
+
+    <h2 class="section-header">Horas de Estudo (por dia da semana)</h2>
+    <div class="schedule-grid">
+      <div class="sch-day"><label>Seg</label><input type="number" step="0.5" min="0" data-day="1" /></div>
+      <div class="sch-day"><label>Ter</label><input type="number" step="0.5" min="0" data-day="2" /></div>
+      <div class="sch-day"><label>Qua</label><input type="number" step="0.5" min="0" data-day="3" /></div>
+      <div class="sch-day"><label>Qui</label><input type="number" step="0.5" min="0" data-day="4" /></div>
+      <div class="sch-day"><label>Sex</label><input type="number" step="0.5" min="0" data-day="5" /></div>
+      <div class="sch-day"><label>Sáb</label><input type="number" step="0.5" min="0" data-day="6" /></div>
+      <div class="sch-day"><label>Dom</label><input type="number" step="0.5" min="0" data-day="0" /></div>
+    </div>
+
+    <h2 class="section-header">Matérias</h2>
+    <div id="matters-list" class="list"></div>
+    <button id="add-matter-btn" class="btn-secondary">+ Adicionar matéria</button>
+
+    <h2 class="section-header">Folgas (datas off)</h2>
+    <div id="folgas-list" class="list"></div>
+    <button id="add-folga-btn" class="btn-secondary">+ Adicionar folga</button>
+
+    <h2 class="section-header">Notificações</h2>
+    <div class="form-row">
+      <label for="cfg-notif">Lembrete diário</label>
+      <input type="time" id="cfg-notif-time" value="08:00" />
+      <button id="cfg-notif-enable" class="btn-secondary btn-small">Ativar</button>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Status</div>
+      <div id="notif-status" class="info-value secondary">—</div>
+    </div>
+
+    <h2 class="section-header">Backup</h2>
+    <button id="export-btn" class="btn-primary">📤 Exportar dados (JSON)</button>
+    <button id="import-btn" class="btn-secondary">📥 Importar dados (JSON)</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" />
+    <button id="demo-btn" class="btn-secondary">🧪 Carregar simulação de 1 mês</button>
+
+    <h2 class="section-header">Sobre</h2>
+    <div class="about">
+      <p>Estudos Concurso — PWA pessoal</p>
+      <p class="secondary">Versão 2.0 (Firebase sync)</p>
+      <button id="reset-btn" class="btn-danger">⚠️ Resetar todos os dados</button>
+    </div>
+
+    <h2 class="section-header">Conta</h2>
+    <div class="info-row">
+      <div class="info-label">Conectado como</div>
+      <div id="user-email" class="info-value secondary">—</div>
+    </div>
+    <button id="signout-btn" class="btn-secondary">Sair da conta</button>
+  </section>
+
+  <!-- ╔══════════════════ ADD LOG MODAL ══════════════════╗ -->
+  <div id="add-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Novo Registro</h2>
+        <button id="modal-close" class="modal-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label for="add-data">Data</label>
+          <input type="date" id="add-data" />
+        </div>
+        <div class="form-row">
+          <label for="add-matter">Matéria</label>
+          <select id="add-matter"></select>
+        </div>
+        <div class="form-row">
+          <label for="add-aula">Aula</label>
+          <input type="number" id="add-aula" min="1" step="1" placeholder="número da aula" />
+        </div>
+        <div class="form-row">
+          <label for="add-fase">Fase</label>
+          <select id="add-fase">
+            <option value="">— escolha matéria e aula primeiro —</option>
+          </select>
+        </div>
+        <div id="fase-hint" class="hint"></div>
+        <div class="form-row">
+          <label for="add-tempo">Tempo (min)</label>
+          <input type="number" id="add-tempo" min="1" step="1" placeholder="ex: 60" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-save" class="btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════ MATTER MODAL ══════════════════╗ -->
+  <div id="matter-modal" class="modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h2 id="matter-modal-title">Nova Matéria</h2>
+        <button id="matter-modal-close" class="modal-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label for="matter-name">Nome</label>
+          <input type="text" id="matter-name" placeholder="ex: Português" />
+        </div>
+        <div class="form-row">
+          <label for="matter-total">Total de aulas</label>
+          <input type="number" id="matter-total" min="1" step="1" placeholder="ex: 16" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="matter-delete" class="btn-danger" style="display:none">Excluir</button>
+        <button id="matter-save" class="btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════ FOLGA MODAL ══════════════════╗ -->
+  <div id="folga-modal" class="modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h2>Nova Folga</h2>
+        <button id="folga-modal-close" class="modal-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label for="folga-data">Data</label>
+          <input type="date" id="folga-data" />
+        </div>
+        <div class="form-row">
+          <label for="folga-motivo">Motivo (opcional)</label>
+          <input type="text" id="folga-motivo" placeholder="ex: feriado, doença" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="folga-save" class="btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════ AUTH SCREEN ══════════════════╗ -->
+  <div id="auth-overlay" class="auth-overlay">
+    <div class="auth-content">
+      <div class="auth-icon">📚</div>
+      <h1>Estudos Concurso</h1>
+      <p class="auth-subtitle">Entre com sua conta Google para sincronizar entre dispositivos</p>
+      <button id="auth-signin-btn" class="btn-primary auth-btn">
+        <span class="g-logo">G</span> Entrar com Google
+      </button>
+      <div id="auth-error" class="auth-error"></div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════ TOAST ══════════════════╗ -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ╔══════════════════ BOTTOM NAV ══════════════════╗ -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="home">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Home</span>
+    </button>
+    <button class="nav-btn" data-tab="log">
+      <span class="nav-icon">📝</span>
+      <span class="nav-label">Log</span>
+    </button>
+    <button class="nav-btn" data-tab="revisoes">
+      <span class="nav-icon">🔄</span>
+      <span class="nav-label">Revisões</span>
+    </button>
+    <button class="nav-btn" data-tab="config">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">Config</span>
+    </button>
+  </nav>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
