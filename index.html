@@ -20,10 +20,12 @@
       <span id="topbar-date" class="date"></span>
     </header>
 
+    <div id="motiv-banner" class="motiv-banner"></div>
+
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-label">🔥 Streak</div>
-        <div id="kpi-streak" class="kpi-value blue">0</div>
+        <div id="kpi-streak" class="kpi-value green">0</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">✅ Hoje (h)</div>
@@ -48,6 +50,15 @@
       <div class="info-label">Adesão geral</div>
       <div id="adesao-val" class="info-value">0%</div>
     </div>
+
+    <h2 class="section-header">Total Acumulado</h2>
+    <div id="total-summary" class="total-summary">
+      <div>
+        <div class="total-label">⏱ Total geral desde o início</div>
+        <div id="total-geral" class="total-value">0.0h</div>
+      </div>
+    </div>
+    <div id="total-breakdown" class="total-breakdown list"></div>
 
     <h2 class="section-header">Fazer Hoje</h2>
     <div id="fazer-hoje-list" class="list">
@@ -84,13 +95,17 @@
       <h1>Log de Estudos</h1>
     </header>
 
-    <div class="filter-bar">
+    <div class="filter-bar with-sort">
       <select id="log-filter-matter" class="filter-select">
-        <option value="">Todas as matérias</option>
+        <option value="">Matéria</option>
+      </select>
+      <select id="log-filter-aula" class="filter-select">
+        <option value="">Aula</option>
       </select>
       <select id="log-filter-fase" class="filter-select">
-        <option value="">Todas as fases</option>
+        <option value="">Fase</option>
       </select>
+      <button id="log-sort-btn" class="sort-btn">Data ↓</button>
     </div>
 
     <div id="log-list" class="list log-list"></div>
@@ -102,8 +117,17 @@
   <section id="tab-revisoes" class="tab">
     <header class="topbar">
       <h1>Revisões</h1>
-      <span class="subtitle">consulta apenas — registre na aba Log</span>
+      <span class="subtitle">consulta — registre no Log</span>
     </header>
+
+    <div class="filter-bar two-col">
+      <select id="rev-filter-matter" class="filter-select">
+        <option value="">Matéria</option>
+      </select>
+      <select id="rev-filter-aula" class="filter-select">
+        <option value="">Aula</option>
+      </select>
+    </div>
 
     <div id="revisoes-list" class="list rev-list"></div>
   </section>
@@ -118,6 +142,18 @@
     <div class="form-row">
       <label for="cfg-inicio">Data de início</label>
       <input type="date" id="cfg-inicio" />
+    </div>
+    <div class="form-row">
+      <label for="cfg-week-start">Início da semana</label>
+      <select id="cfg-week-start">
+        <option value="0">Domingo</option>
+        <option value="1">Segunda-feira</option>
+        <option value="2">Terça-feira</option>
+        <option value="3">Quarta-feira</option>
+        <option value="4">Quinta-feira</option>
+        <option value="5">Sexta-feira</option>
+        <option value="6">Sábado</option>
+      </select>
     </div>
 
     <h2 class="section-header">Horas de Estudo (por dia da semana)</h2>

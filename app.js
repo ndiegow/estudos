@@ -41,6 +41,137 @@ const FASE_QUESTOES = '❓ Questões';
 const FASE_REVISAO = (n) => `🔄 D+${n}`;
 const ALL_FASES = [FASE_LEITURA, FASE_QUESTOES, ...MARKERS.map(FASE_REVISAO)];
 
+// ── 120 frases motivacionais para concurseiros ────────────────────────
+const MOTIVATIONAL_QUOTES = [
+  "Constância vence intensidade.",
+  "Uma página por dia, um livro por mês.",
+  "A aprovação dança com quem está no salão.",
+  "Hoje é dia de fazer o básico bem feito.",
+  "Disciplina é liberdade futura.",
+  "O processo importa mais que o resultado.",
+  "Não compare seu capítulo 1 com o capítulo 20 dos outros.",
+  "Estudo não acumula, ele consolida.",
+  "A revisão de hoje é a aprovação de amanhã.",
+  "Cada questão errada é uma lição gratuita.",
+  "Persistência supera talento sem método.",
+  "Não desista no meio do caminho — quase ninguém chega ao fim.",
+  "Confie no processo, mesmo quando não vê resultado.",
+  "Quem caminha todo dia, sempre chega mais longe.",
+  "O cansaço de hoje é o orgulho de amanhã.",
+  "Estudar é cumprir com o eu do futuro.",
+  "Pequenos hábitos, grandes resultados.",
+  "Foco no que você controla: hoje.",
+  "Cada hora estudada conta no fim.",
+  "Aprovação é resultado de mil pequenas decisões.",
+  "Não há aprovação sem desconforto.",
+  "Comece o dia eliminando o mais difícil.",
+  "Repetição vence o esquecimento.",
+  "Você não precisa estar pronto, precisa começar.",
+  "Quem domina o tédio domina o jogo.",
+  "Sem revisão, todo estudo evapora.",
+  "Aprovação não vem para os mais inteligentes, vem para os mais consistentes.",
+  "Um dia ruim de estudo é melhor que um dia perfeito sem estudar.",
+  "Vença o algoritmo do esquecimento.",
+  "Concurseiro forte é o que volta no dia seguinte.",
+  "A jornada é solitária, mas não impossível.",
+  "Dia ruim também conta no streak.",
+  "Faça o necessário, depois o possível, depois o impossível.",
+  "Quem planeja, vence a ansiedade.",
+  "Cada matéria estudada é um adversário a menos.",
+  "Estudar é um ato de fé no próprio futuro.",
+  "Não é falta de tempo, é falta de prioridade.",
+  "Hoje você se aproxima ou se afasta da nomeação.",
+  "Caminhar devagar é melhor que parar.",
+  "Quem estuda no escuro brilha na prova.",
+  "Edital é mapa, não obstáculo.",
+  "Volta para a cadeira. Sempre.",
+  "Não existe atalho — existe método.",
+  "Você não está atrasado, está no seu ritmo.",
+  "Vitórias pequenas constroem grandes aprovações.",
+  "A diferença entre quem passa e quem desiste é uma escolha por dia.",
+  "Não estude para a prova, estude para a vaga.",
+  "O sofá não te leva para o salão.",
+  "Aprovação se constrói com tijolos invisíveis.",
+  "Hoje vale 1% do total. Mas 100 vezes 1% é tudo.",
+  "Sem estratégia, esforço é desperdício.",
+  "Concurseiro não tem azar, tem método ruim.",
+  "Confiança vem da prática, não da motivação.",
+  "Caderno aberto, mente acelerada.",
+  "Quem estuda dormindo, acorda aprovado.",
+  "Não busque perfeição, busque entrega.",
+  "Aprovação não acontece, é construída.",
+  "Sua maior competição é o você de ontem.",
+  "Continue mesmo quando não tiver vontade — principalmente nesses dias.",
+  "Cada lei lida é um ponto a mais.",
+  "Disciplina é fazer o que se odeia com a serenidade de quem ama o resultado.",
+  "Revisão programada é seguro de aprovação.",
+  "Você não precisa entender hoje. Precisa começar.",
+  "Estudo eficiente > estudo extenso.",
+  "Quem corre sozinho, chega primeiro nas provas certas.",
+  "Aprovação é montanha — sobe-se em passos.",
+  "Sem método, esforço é só cansaço.",
+  "O segredo é não desistir nos dias mornos.",
+  "Reset diário: ontem foi ontem.",
+  "Você está mais perto hoje do que estava ontem.",
+  "Confiança nasce do trabalho silencioso.",
+  "Não é sobre saber tudo, é sobre saber o que cai.",
+  "Os melhores dias de estudo parecem comuns.",
+  "Pequenas vitórias diárias > grandes promessas semanais.",
+  "Constância sem método cansa. Método sem constância falha.",
+  "Hoje é a base do streak de amanhã.",
+  "Cada questão é um treino, não um julgamento.",
+  "Não existe estudo perdido, existe estudo guardado.",
+  "Aprovado é o que voltou mais uma vez.",
+  "A diferença está nos detalhes que ninguém vê.",
+  "Estude como se a vaga fosse sua.",
+  "Quem revisa hoje, lembra na prova.",
+  "Cumpra a meta, não a expectativa.",
+  "Não dependa de motivação — dependa da rotina.",
+  "Sua próxima aprovação já começou.",
+  "Atrasos acontecem, abandono é escolha.",
+  "Cada dia é um chute na meta.",
+  "Pequeno hoje, grande amanhã.",
+  "Aprovação se planta com semanas, não com semestres.",
+  "O cansaço passa, o aprendizado fica.",
+  "Não desperdice a hora que está aqui agora.",
+  "Quem ganha não é o mais rápido, é o que não para.",
+  "Cada revisão é um voto de confiança em você mesmo.",
+  "Você não falha por estudar pouco, falha por não revisar.",
+  "Foco curto, repetido por anos, vence foco longo esporádico.",
+  "Aprovação é hábito travestido de sorte.",
+  "A vida não vai parar para você estudar — pare você por ela.",
+  "Disciplina ama quem disciplina.",
+  "Você não precisa de vontade, precisa de execução.",
+  "A meta é o farol, a constância é o leme.",
+  "Aprovação é o resultado de quem aparece todo dia.",
+  "Pequenas faltas viram grandes lacunas.",
+  "Cada hora investida hoje paga juros no futuro.",
+  "Aprenda a gostar do desconforto.",
+  "O ritmo cura a ansiedade.",
+  "Quem domina o tédio, conquista o cargo.",
+  "Concurseiro veterano sabe: o tijolo é diário.",
+  "A vitória vem para quem não a busca todo dia, mas chega lá todo dia.",
+  "Não há atalho honesto.",
+  "Sente. Estuda. Repete.",
+  "Aprovação não é evento, é processo.",
+  "Suas anotações de hoje são seu Eu de amanhã.",
+  "A jornada lapida o concurseiro, não a prova.",
+  "Hoje é véspera. Sempre.",
+  "Acumular questões resolvidas é acumular pontos na prova.",
+  "Não compare seu pós-edital com o pré-edital dos outros.",
+  "Aprovados não nascem aprovados — eles aparecem.",
+  "Quem mede progride.",
+  "O melhor concurseiro é o que ainda está sentado.",
+  "Estude para hoje, revise para a vida.",
+  "Cada dia é uma escolha entre desejar e fazer.",
+  "Aprovação não pede permissão — pede presença."
+];
+
+function getMotivationalQuote() {
+  // Random each app open
+  return MOTIVATIONAL_QUOTES[Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length)];
+}
+
 // ═══════════════════════════════════════════════════════════
 // Auth state
 // ═══════════════════════════════════════════════════════════
@@ -125,6 +256,7 @@ async function initIfFirstRun() {
     const today = new Date();
     await setConfig('inicio', toISO(today));
     await setConfig('schedule', { 0: 2.5, 1: 4, 2: 4, 3: 4, 4: 4, 5: 4, 6: 2.5 });
+    await setConfig('weekStart', 0);
     await setConfig('notif_time', '08:00');
     await setConfig('notif_enabled', false);
 
@@ -192,10 +324,13 @@ function dayName(iso) {
   return ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'][dayOfWeek(iso)];
 }
 
-function startOfWeekISO(iso) {
+function startOfWeekISO(iso, weekStart = 0) {
+  // weekStart: 0=Sunday, 1=Monday, ..., 6=Saturday
   const d = fromISO(iso);
   const dow = d.getDay();
-  d.setDate(d.getDate() - dow);
+  // Days to subtract so that we land on weekStart
+  const diff = (dow - weekStart + 7) % 7;
+  d.setDate(d.getDate() - diff);
   return toISO(d);
 }
 
@@ -218,6 +353,7 @@ async function loadAll() {
     config: {
       inicio: await getConfig('inicio', todayISO()),
       schedule: await getConfig('schedule', {0:2.5,1:4,2:4,3:4,4:4,5:4,6:2.5}),
+      weekStart: await getConfig('weekStart', 0),  // 0=Sunday, 1=Monday, ...
     },
     matters: await dbGetAll('matters'),
     log: await dbGetAll('log'),
@@ -373,7 +509,7 @@ function getAdesao(data) {
 
 function getMetaSemanal(data) {
   const today = todayISO();
-  const weekStart = startOfWeekISO(today);
+  const weekStart = startOfWeekISO(today, data.config.weekStart || 0);
   let horas = 0, meta = 0;
   let cursor = weekStart;
   while (cursor <= today) {
@@ -395,6 +531,24 @@ function getProgressoMaterias(data) {
       pct: m.total === 0 ? 0 : concluidas / m.total,
     };
   });
+}
+
+function getTotalHoras(data) {
+  return data.log.reduce((sum, e) => sum + (e.tempo || 0), 0) / 60;
+}
+
+function getTotalHorasPorMateria(data) {
+  const map = new Map();
+  for (const e of data.log) {
+    map.set(e.matter, (map.get(e.matter) || 0) + (e.tempo || 0));
+  }
+  // Convert minutes to hours and sort descending
+  const out = [];
+  for (const m of data.matters) {
+    out.push({ name: m.name, horas: (map.get(m.name) || 0) / 60 });
+  }
+  out.sort((a, b) => b.horas - a.horas);
+  return out;
 }
 
 function getHistorico(data, days = 30) {
@@ -480,6 +634,15 @@ function renderHome() {
   const today = todayISO();
   document.getElementById('topbar-date').textContent = fmtBRFull(today);
 
+  // Motivational banner (random per render)
+  const motivEl = document.getElementById('motiv-banner');
+  if (motivEl && !motivEl.dataset.shown) {
+    motivEl.textContent = getMotivationalQuote();
+    motivEl.dataset.shown = '1';
+  } else if (motivEl && !motivEl.textContent) {
+    motivEl.textContent = getMotivationalQuote();
+  }
+
   document.getElementById('kpi-streak').textContent = getStreak(appData);
   const hoje = hoursForDay(today, appData.log);
   document.getElementById('kpi-hoje').textContent = hoje.toFixed(1);
@@ -499,6 +662,20 @@ function renderHome() {
 
   const adesao = getAdesao(appData);
   document.getElementById('adesao-val').textContent = `${Math.round(adesao * 100)}%`;
+
+  // Total acumulado
+  const totalGeral = getTotalHoras(appData);
+  document.getElementById('total-geral').textContent = `${totalGeral.toFixed(1)}h`;
+  const breakdown = getTotalHorasPorMateria(appData);
+  const breakdownEl = document.getElementById('total-breakdown');
+  breakdownEl.innerHTML = breakdown.map(b => `
+    <div class="list-item">
+      <div class="item-main">
+        <div class="item-title">${escHtml(b.name)}</div>
+      </div>
+      <div class="item-right"><strong>${b.horas.toFixed(1)}h</strong></div>
+    </div>
+  `).join('');
 
   const fazer = getFazerHoje(appData);
   const fazerEl = document.getElementById('fazer-hoje-list');
@@ -577,27 +754,68 @@ function renderHome() {
   document.getElementById('dias-total').textContent = getDiasUteisTotal(appData);
 }
 
+let logSortMode = 'date-desc';  // 'date-desc' or 'aula-asc'
+
 function renderLog() {
   const matterFilter = document.getElementById('log-filter-matter');
+  const aulaFilter = document.getElementById('log-filter-aula');
   const faseFilter = document.getElementById('log-filter-fase');
+  const sortBtn = document.getElementById('log-sort-btn');
   const matterVal = matterFilter.value;
+  const aulaVal = aulaFilter.value;
   const faseVal = faseFilter.value;
 
-  matterFilter.innerHTML = '<option value="">Todas as matérias</option>' +
-    appData.matters.map(m => `<option value="${escHtml(m.name)}"${m.name === matterVal ? ' selected' : ''}>${escHtml(m.name)}</option>`).join('');
-  faseFilter.innerHTML = '<option value="">Todas as fases</option>' +
-    ALL_FASES.map(f => `<option value="${escHtml(f)}"${f === faseVal ? ' selected' : ''}>${escHtml(f)}</option>`).join('');
+  // Matter filter
+  matterFilter.innerHTML = '<option value="">Matéria</option>' +
+    appData.matters.map(m =>
+      `<option value="${escHtml(m.name)}"${m.name === matterVal ? ' selected' : ''}>${escHtml(m.name)}</option>`
+    ).join('');
 
-  let log = [...appData.log].sort((a, b) =>
-    b.data.localeCompare(a.data) ||
-    (b.createdAt || 0) - (a.createdAt || 0)
-  );
+  // Aula filter — populate dynamically from log (filtered by matter if selected)
+  let aulasSet = new Set();
+  for (const e of appData.log) {
+    if (!matterVal || e.matter === matterVal) {
+      aulasSet.add(e.aula);
+    }
+  }
+  const aulasList = [...aulasSet].sort((a, b) => a - b);
+  aulaFilter.innerHTML = '<option value="">Aula</option>' +
+    aulasList.map(a =>
+      `<option value="${a}"${String(a) === aulaVal ? ' selected' : ''}>Aula ${a}</option>`
+    ).join('');
+
+  // Fase filter
+  faseFilter.innerHTML = '<option value="">Fase</option>' +
+    ALL_FASES.map(f =>
+      `<option value="${escHtml(f)}"${f === faseVal ? ' selected' : ''}>${escHtml(f)}</option>`
+    ).join('');
+
+  // Sort button label
+  sortBtn.textContent = logSortMode === 'date-desc' ? 'Data ↓' : 'Aula ↑';
+
+  // Apply filters
+  let log = [...appData.log];
   if (matterVal) log = log.filter(e => e.matter === matterVal);
+  if (aulaVal) log = log.filter(e => String(e.aula) === aulaVal);
   if (faseVal) log = log.filter(e => e.fase === faseVal);
+
+  // Apply sort
+  if (logSortMode === 'date-desc') {
+    log.sort((a, b) =>
+      b.data.localeCompare(a.data) || (b.createdAt || 0) - (a.createdAt || 0)
+    );
+  } else {
+    // Sort by matter asc, then aula asc, then date desc
+    log.sort((a, b) =>
+      a.matter.localeCompare(b.matter) ||
+      a.aula - b.aula ||
+      b.data.localeCompare(a.data)
+    );
+  }
 
   const listEl = document.getElementById('log-list');
   if (log.length === 0) {
-    listEl.innerHTML = '<div class="empty">— sem entradas no log —</div>';
+    listEl.innerHTML = '<div class="empty">— nenhum registro encontrado —</div>';
     return;
   }
   listEl.innerHTML = log.map(e => `
@@ -617,10 +835,38 @@ function renderLog() {
 }
 
 function renderRevisoes() {
-  const aulas = getAulasCompletas(appData.log);
+  let aulas = getAulasCompletas(appData.log);
   aulas.sort((a, b) => a.dataInicio.localeCompare(b.dataInicio) || a.matter.localeCompare(b.matter) || a.aula - b.aula);
   const today = todayISO();
   const listEl = document.getElementById('revisoes-list');
+
+  // Populate filters
+  const matterFilter = document.getElementById('rev-filter-matter');
+  const aulaFilter = document.getElementById('rev-filter-aula');
+  const matterVal = matterFilter ? matterFilter.value : '';
+  const aulaVal = aulaFilter ? aulaFilter.value : '';
+
+  if (matterFilter) {
+    matterFilter.innerHTML = '<option value="">Matéria</option>' +
+      appData.matters.map(m =>
+        `<option value="${escHtml(m.name)}"${m.name === matterVal ? ' selected' : ''}>${escHtml(m.name)}</option>`
+      ).join('');
+  }
+  if (aulaFilter) {
+    const aulasSet = new Set();
+    for (const a of aulas) {
+      if (!matterVal || a.matter === matterVal) aulasSet.add(a.aula);
+    }
+    const aulasList = [...aulasSet].sort((x, y) => x - y);
+    aulaFilter.innerHTML = '<option value="">Aula</option>' +
+      aulasList.map(a =>
+        `<option value="${a}"${String(a) === aulaVal ? ' selected' : ''}>Aula ${a}</option>`
+      ).join('');
+  }
+
+  // Apply filters
+  if (matterVal) aulas = aulas.filter(a => a.matter === matterVal);
+  if (aulaVal) aulas = aulas.filter(a => String(a.aula) === aulaVal);
 
   if (aulas.length === 0) {
     listEl.innerHTML = '<div class="empty">— nenhuma aula em ciclo de revisão —<br>(registre ❓ Questões no Log para iniciar)</div>';
@@ -654,6 +900,8 @@ function renderRevisoes() {
 
 function renderConfig() {
   document.getElementById('cfg-inicio').value = appData.config.inicio;
+  const wsEl = document.getElementById('cfg-week-start');
+  if (wsEl) wsEl.value = String(appData.config.weekStart || 0);
   const sched = appData.config.schedule;
   document.querySelectorAll('.schedule-grid input').forEach(inp => {
     const day = +inp.dataset.day;
@@ -978,6 +1226,7 @@ async function loadDemo() {
 
   await setConfig('inicio', startISO);
   await setConfig('schedule', { 0: 2.5, 1: 4, 2: 4, 3: 4, 4: 4, 5: 4, 6: 2.5 });
+  await setConfig('weekStart', 0);
   await setConfig('notif_time', '08:00');
   await setConfig('notif_enabled', false);
 
@@ -1281,9 +1530,27 @@ function attachUIHandlers() {
   document.getElementById('add-aula').addEventListener('input', updateFaseOptions);
 
   document.getElementById('log-filter-matter').addEventListener('change', renderLog);
+  document.getElementById('log-filter-aula').addEventListener('change', renderLog);
   document.getElementById('log-filter-fase').addEventListener('change', renderLog);
+  document.getElementById('log-sort-btn').addEventListener('click', () => {
+    logSortMode = logSortMode === 'date-desc' ? 'aula-asc' : 'date-desc';
+    renderLog();
+  });
+
+  document.getElementById('rev-filter-matter').addEventListener('change', renderRevisoes);
+  document.getElementById('rev-filter-aula').addEventListener('change', renderRevisoes);
+
+  // Total acumulado toggle
+  document.getElementById('total-summary').addEventListener('click', () => {
+    document.getElementById('total-summary').classList.toggle('expanded');
+    document.getElementById('total-breakdown').classList.toggle('show');
+  });
 
   document.getElementById('cfg-inicio').addEventListener('change', saveInicio);
+  document.getElementById('cfg-week-start').addEventListener('change', async () => {
+    const val = +document.getElementById('cfg-week-start').value;
+    await setConfig('weekStart', val);
+  });
   document.querySelectorAll('.schedule-grid input').forEach(inp => {
     inp.addEventListener('change', saveSchedule);
   });
